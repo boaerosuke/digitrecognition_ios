@@ -8,10 +8,10 @@ A complete Tutorial for this App can be found [here](https://medium.com/@EridyLu
 In order to implement this completely by yourself you will need to have your working-station setup as follows:
 
 **Deep Learning**
-- Tensorflow (newest version)
+- Tensorflow 1.2.1
 - Python 2.7
-- Keras (newest version)
-- coremltools (newest version)
+- Keras 2.0.6
+- coremltools 0.5.1
 
 **iOS Development**
 - MACOS Sierra 10.12.6 (this is mandatory for Xcode Version 9.0 beta)
