@@ -67,26 +67,9 @@
     VNCoreMLRequest *request = [[VNCoreMLRequest alloc] initWithModel: vnc_core_ml_model completionHandler: (VNRequestCompletionHandler) ^(VNRequest *request, NSError *error){
         NSArray *results = [request.results copy];
         
-        VNCoreMLFeatureValueObservation *res = ((VNCoreMLFeatureValueObservation *)(results[0]));
+        VNClassificationObservation *res = ((VNClassificationObservation *)(results[0]));
         
-        NSNumber *prediction = [NSNumber numberWithFloat:0];
-        NSNumber *compare= [NSNumber numberWithFloat:0];
-        int atIndex = 0;
-        
-        
-        for(int i = 0; i<[res.featureValue multiArrayValue].count; i++){
-            
-            compare = [[res.featureValue multiArrayValue] objectAtIndexedSubscript:i];
-            if([compare floatValue] > [prediction floatValue]){
-                prediction = compare;
-                atIndex = i;
-            }
-        }
-        
-       // double predictionPercentage = [[[res.featureValue multiArrayValue] objectAtIndexedSubscript:atIndex] doubleValue];
-        
-        NSString *result = @"";
-        self.resultLabel.text = [result stringByAppendingFormat: @"Digit may be: %i", atIndex];
+        self.resultLabel.text = [NSString stringWithFormat: @"Digit may be: %@", res.identifier];
     }];
     
     NSDictionary *options_dict = [[NSDictionary alloc] init];
